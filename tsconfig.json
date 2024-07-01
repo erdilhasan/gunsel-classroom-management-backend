@@ -3,11 +3,14 @@
       "target": "es2020",
       "module": "commonjs",
       "strict": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
       "esModuleInterop": true,
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true,
-      "outDir": "./dist"
+      "outDir": "./dist",
+      
     },
-    "include": ["src/**/*.ts"],
+    "include": ["src/**/*.ts", "src/config/database_connection.js"],
     "exclude": ["node_modules"]
   }
