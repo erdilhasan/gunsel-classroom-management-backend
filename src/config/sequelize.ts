@@ -1,11 +1,12 @@
 // sequelize.js
-import { Sequelize } from "sequelize";
+import { Sequelize } from "sequelize-typescript";
 import config from "./database_connection";
 const sequelize = new Sequelize(config.development);
 // Test the connection
 async function testConnection() {
   try {
     await sequelize.authenticate();
+    await sequelize.sync();
     console.log("Database connected succefully");
   } catch (error) {
     //ensure you created the database

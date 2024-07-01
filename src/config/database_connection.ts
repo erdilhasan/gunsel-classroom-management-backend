@@ -1,3 +1,8 @@
+import Class from "../models/Class";
+import Course from "../models/Course";
+import Student from "../models/Student";
+import StudentCourse from "../models/StudentCourse";
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const db_config: any = {
   development: {
@@ -6,7 +11,7 @@ const db_config: any = {
     database: "gunsel_classroom",
     host: "localhost",
     dialect: "mysql",
-    models: [__dirname + "/models"],
+    models: [Class, Student, Course, StudentCourse],
   },
 };
 

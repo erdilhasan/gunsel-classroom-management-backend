@@ -1,14 +1,17 @@
 import {
+  BelongsTo,
   BelongsToMany,
   Column,
   CreatedAt,
   DataType,
+  ForeignKey,
   Model,
   Table,
   UpdatedAt,
 } from "sequelize-typescript";
 import Course from "./Course";
 import StudentCourse from "./StudentCourse";
+import Class from "./Class";
 
 @Table({ timestamps: true, tableName: "students", modelName: "Student" })
 class Student extends Model {
@@ -23,6 +26,13 @@ class Student extends Model {
   declare name: string;
   @Column({ type: DataType.INTEGER })
   declare age: number;
+
+  @ForeignKey(() => Class)
+  @Column({ type: DataType.UUID })
+  declare classId: number;
+
+  @BelongsTo(() => Class)
+  declare class: Class;
 
   @BelongsToMany(() => Course, () => StudentCourse)
   declare courses: Course[];
