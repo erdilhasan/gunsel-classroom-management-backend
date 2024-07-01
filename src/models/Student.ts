@@ -34,6 +34,7 @@ class Student extends Model {
   @BelongsTo(() => Class)
   declare class: Class;
 
+  //Also adds StudentCourse Table for some reason, not intentional
   @BelongsToMany(() => Course, () => StudentCourse)
   declare courses: Course[];
 

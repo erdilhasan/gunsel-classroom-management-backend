@@ -5,12 +5,14 @@ import {
   getAllCourse,
   getCourse,
   updateCourse,
+  viewCourse,
 } from "../controllers/course_controller";
 
 const courseRouter: Router = Router();
 
 courseRouter.post("/create", createCourse);
 courseRouter.get("/getCourse", getCourse);
+courseRouter.get("/viewCourse", viewCourse);
 courseRouter.get("/getAllCourse", getAllCourse);
 courseRouter.post("/deleteCourse", deleteCourse);
 courseRouter.post("/updateCourse", updateCourse);

@@ -23,7 +23,7 @@ class Course extends Model {
   declare name: string;
 
   @BelongsToMany(() => Student, () => StudentCourse)
-  declare students: Student;
+  declare students: Student[];
 
   @CreatedAt
   declare created_at: Date;

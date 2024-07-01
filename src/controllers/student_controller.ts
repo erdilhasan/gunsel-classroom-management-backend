@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import Student from "../models/Student";
 import Course from "../models/Course";
+import Class from "../models/Class";
 
 export async function createStudent(req: Request, res: Response) {
   const newStudent: Student = new Student(req.body);
@@ -20,12 +21,26 @@ export async function getStudent(req: Request, res: Response) {
 
   res.status(200).json(wantedStudent);
 }
+
+export async function viewStudent(req: Request, res: Response) {
+  const pk: string = req.body.primaryKey;
+  const wantedStudent: Student | null = await Student.findByPk(pk, {
+    include: [Course, Class],
+  });
+
+  res.status(200).json({
+    ...wantedStudent?.toJSON(),
+    noOfCourses: wantedStudent?.courses.length,
+  });
+}
+
 export async function deleteStudent(req: Request, res: Response) {
   const pk: string = req.body.primaryKey;
   const wantedStudent: Student | null = await Student.findByPk(pk);
   await wantedStudent?.destroy();
   res.status(200).json({ msg: "Destoryed" });
 }
+
 export async function updateStudent(req: Request, res: Response) {
   const pk: string = req.body.primaryKey;
   const wantedStudent: Student | null = await Student.findByPk(pk);

@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import Course from "../models/Course";
+import Student from "../models/Student";
 
 export async function createCourse(req: Request, res: Response) {
   const newCourse: Course = new Course(req.body);
@@ -12,18 +13,32 @@ export async function getAllCourse(req: Request, res: Response) {
 
   res.status(200).json(courses);
 }
+
 export async function getCourse(req: Request, res: Response) {
   const pk: string = req.body.primaryKey;
   const wantedCourse: Course | null = await Course.findByPk(pk);
 
   res.status(200).json(wantedCourse);
 }
+export async function viewCourse(req: Request, res: Response) {
+  const pk: string = req.body.primaryKey;
+  const wantedCourse: Course | null = await Course.findByPk(pk, {
+    include: [Student],
+  });
+
+  res.status(200).json({
+    ...wantedCourse?.toJSON(),
+    noOfStudents: wantedCourse?.students.length,
+  });
+}
+
 export async function deleteCourse(req: Request, res: Response) {
   const pk: string = req.body.primaryKey;
   const wantedCourse: Course | null = await Course.findByPk(pk);
   await wantedCourse?.destroy();
   res.status(200).json({ msg: "Destoryed" });
 }
+
 export async function updateCourse(req: Request, res: Response) {
   const pk: string = req.body.primaryKey;
   const wantedCourse: Course | null = await Course.findByPk(pk);
