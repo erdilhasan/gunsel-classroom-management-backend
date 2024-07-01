@@ -1,5 +1,6 @@
 // src/index.ts
 import express, { Request, Response } from "express";
+import "./config/sequelize";
 
 const app = express();
 const port = 3000;

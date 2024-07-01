@@ -21,8 +21,6 @@ class Course extends Model {
 
   @Column({ type: DataType.TEXT })
   declare name: string;
-  @Column({ type: DataType.INTEGER })
-  declare age: number;
 
   @BelongsToMany(() => Student, () => StudentCourse)
   declare students: Student;

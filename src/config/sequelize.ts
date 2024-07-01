@@ -1,6 +1,6 @@
 // sequelize.js
 import { Sequelize } from "sequelize";
-import config from "./database_connection"; //path to the above config.js file
+import config from "./database_connection";
 const sequelize = new Sequelize(config.development);
 // Test the connection
 async function testConnection() {
