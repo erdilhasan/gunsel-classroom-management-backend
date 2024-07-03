@@ -13,7 +13,7 @@ const classRouter: Router = Router();
 
 classRouter.post("/create", createClass);
 classRouter.get("/getClass", getClass);
-classRouter.get("/viewClass", viewClass);
+classRouter.post("/viewClass", viewClass);
 classRouter.get("/getAllClass", getAllClass);
 classRouter.post("/deleteClass", deleteClass);
 classRouter.post("/updateClass", updateClass);

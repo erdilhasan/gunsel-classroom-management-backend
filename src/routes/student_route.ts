@@ -13,7 +13,7 @@ const studentRouter: Router = Router();
 
 studentRouter.post("/create", createStudent);
 studentRouter.get("/getStudent", getStudent);
-studentRouter.get("/viewStudent", viewStudent);
+studentRouter.post("/viewStudent", viewStudent);
 studentRouter.get("/getAllStudent", getAllStudent);
 studentRouter.post("/deleteStudent", deleteStudent);
 studentRouter.post("/updateStudent", updateStudent);
