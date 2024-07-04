@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "erdil",
+    "password": "123456",
+    "database": "gunsel_classroom",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "erdil",
+    "password": "123456",
+    "database": "gunsel_classroom",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "erdil",
+    "password": "123456",
+    "database": "gunsel_classroom",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

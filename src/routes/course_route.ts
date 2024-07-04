@@ -12,7 +12,7 @@ const courseRouter: Router = Router();
 
 courseRouter.post("/create", createCourse);
 courseRouter.get("/getCourse", getCourse);
-courseRouter.get("/viewCourse", viewCourse);
+courseRouter.post("/viewCourse", viewCourse);
 courseRouter.get("/getAllCourse", getAllCourse);
 courseRouter.post("/deleteCourse", deleteCourse);
 courseRouter.post("/updateCourse", updateCourse);
