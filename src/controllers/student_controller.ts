@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import Student from "../models/Student";
 import Course from "../models/Course";
 import Class from "../models/Class";
+import * as admin from "firebase-admin";
 
 export async function createStudent(req: Request, res: Response) {
   const newStudent: Student = new Student(req.body);
@@ -59,4 +60,11 @@ export async function enrollCourse(req: Request, res: Response) {
   await course?.$add("students", student as Student);
 
   res.status(200).json({ msg: "Student Enrolled To The Course." });
+}
+export async function subscribeToAllNotifications(req: Request, res: Response) {
+  const token: string = req.body.token;
+
+  admin.messaging().subscribeToTopic(token, "general");
+
+  res.status(200).json({ msg: "Student subscribed To all notifications." });
 }

@@ -1,10 +1,28 @@
 import { Request, Response } from "express";
 import Course from "../models/Course";
 import Student from "../models/Student";
+import * as admin from "firebase-admin";
 
 export async function createCourse(req: Request, res: Response) {
   const newCourse: Course = new Course(req.body);
   await newCourse.save();
+
+  const message = {
+    notification: {
+      title: "New Course",
+      body: "A new course" + " '" + req.body.name + "' is available",
+    },
+    topic: "general",
+  };
+  admin
+    .messaging()
+    .send(message)
+    .then((response) => {
+      console.log("Notification sent:", response);
+    })
+    .catch((error) => {
+      console.error("Error sending notification:", error);
+    });
 
   res.status(200).json(newCourse);
 }

@@ -5,6 +5,7 @@ import {
   enrollCourse,
   getAllStudent,
   getStudent,
+  subscribeToAllNotifications,
   updateStudent,
   viewStudent,
 } from "../controllers/student_controller";
@@ -18,5 +19,6 @@ studentRouter.get("/getAllStudent", getAllStudent);
 studentRouter.post("/deleteStudent", deleteStudent);
 studentRouter.post("/updateStudent", updateStudent);
 studentRouter.post("/enrollCourse", enrollCourse);
+studentRouter.post("/subscribeToAllNotifications", subscribeToAllNotifications);
 
 export default studentRouter;
