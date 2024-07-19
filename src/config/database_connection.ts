@@ -6,7 +6,7 @@ import StudentCourse from "../models/StudentCourse";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const db_config: any = {
   development: {
-    username: "erdil",
+    username: "dev",
     password: "123456",
     database: "gunsel_classroom",
     host: "localhost",
